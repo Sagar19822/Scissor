@@ -1,0 +1,37 @@
+// Scissor Cypher
+
+#include<iostream>
+using namespace std;
+
+string En_Scissor(string N,int k)
+{
+    string cy;
+
+    for(int i=0;i<N.length();i++)
+    {
+        cy=cy+char(int(N[i] + k - 65) % 26 + 65);
+    }
+
+    return cy;
+}
+
+string De_Scissor(string cy,int k)
+{
+    string og;
+
+    for(int i=0;i<cy.length();i++)
+    {
+        og=og+char(int(cy[i] - k -65 + 26) % 26 + 65);
+    }
+
+    return og;
+}
+
+int main()
+{
+    string name;
+    name=En_Scissor("SAGAR",1);
+    cout<<name;
+    cout<<"\n"<<De_Scissor(name,1);
+    
+}
