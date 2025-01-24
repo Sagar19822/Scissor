@@ -1,0 +1,47 @@
+
+#include <iostream>
+using namespace std;
+
+// Function to replace character based on monoalphabetic cipher
+char Mono(char a, string pt, char replacements[]) 
+{
+    for (int i = 0; i < pt.length(); i++) 
+    {
+        if (a == pt[i]) 
+        {
+            return replacements[i];
+        }
+    }
+    return a; // Return the original character if no replacement found
+}
+
+int main() 
+{
+    string pt = "abcde"; // Plaintext characters
+    char replacements[5]; // Replacement characters
+
+    // Input replacements for each character in the plaintext
+    for (int i = 0; i < pt.length(); i++) 
+    {
+        cout << "Enter replacement for " << pt[i] << ": ";
+        cin >> replacements[i];
+    }
+
+    char cy[5]; // Encrypted text array
+
+    // Encrypt each character in the plaintext
+    for (int i = 0; i < pt.length(); i++) 
+    {
+        cy[i] = Mono(pt[i], pt, replacements);
+    }
+
+    // Output the encrypted text
+    cout << "Encrypted text: ";
+    for (int i = 0; i < pt.length(); i++) 
+    {
+        cout << cy[i];
+    }
+    cout << endl;
+
+    return 0;
+}
