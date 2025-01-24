@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+
+string Encrypt(string name,string k)
+{
+	int i,j,s;
+	char cy[15];
+	//string cy;
+	
+	for(i=0,j=0;i<name.length();i++,j++)
+	{
+		if(j>=k.length())
+		{
+			j=0;
+		}
+		
+		s=toupper(k[j]) - 65;
+		cy[i]=((toupper(name[i]) + s - 65) % 26 + 65);
+	}
+	return cy;
+}
+
+string Decrypt(string name,string k)
+{
+	int i,j,s;
+	char cy[20];
+	
+	for(i=0,j=0;i<name.length();i++,j++)
+	{
+		if(j>=k.length())
+		{
+			j=0;
+		}
+		
+		s=toupper(k[j]) - 65;
+		cy[i] = ((toupper(name[i]) - s - 65 + 26) % 26 + 65);
+		
+	}
+	
+	return cy;
+		
+}
+
+int main()
+{
+
+	cout<<Encrypt("SAGAR","XYZ");
+	cout<<"\n"<<Decrypt("PYFXP","XYZ");
+}
